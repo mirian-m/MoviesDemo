@@ -2,7 +2,7 @@
 import UIKit
 class MoviesViewController: UIViewController {
 
-    // MARK:- Iboutlet
+    // MARK:- IBoutlet
     @IBOutlet weak var moviesTableView: UITableView!
     @IBOutlet weak var favoriteBtn: UIButton! {
         didSet {
@@ -122,8 +122,9 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate, Movi
         vc.movie = movie
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     // Fill Array Depending on the seenBtn and favoriteBtn buttons
+    // FIXME:- Find better logic
     fileprivate func fillMyMovies() {
         if seenBtn.backgroundColor == .none, favoriteBtn.backgroundColor == .none {
             myMovies[0] = movies.filter({ $0.seen })
