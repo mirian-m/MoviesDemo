@@ -126,11 +126,11 @@
 		8417B7A2287D344E008F4B7C /* MIrianMaglakelidze#15 */ = {
 			isa = PBXGroup;
 			children = (
-				84143D81287FE1A200084350 /* Extension */,
-				8417B7D3287D5D06008F4B7C /* Controllers */,
-				8417B7C8287D4C6A008F4B7C /* CustomView */,
 				8417B7C1287D3C29008F4B7C /* Model */,
+				8417B7C8287D4C6A008F4B7C /* CustomView */,
+				8417B7D3287D5D06008F4B7C /* Controllers */,
 				8417B7BE287D3823008F4B7C /* Cells */,
+				84143D81287FE1A200084350 /* Extension */,
 				8417B7A9287D344E008F4B7C /* Main.storyboard */,
 				8417B7A3287D344E008F4B7C /* AppDelegate.swift */,
 				8417B7A5287D344E008F4B7C /* SceneDelegate.swift */,

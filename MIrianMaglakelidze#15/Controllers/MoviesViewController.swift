@@ -188,6 +188,6 @@ extension MoviesViewController: UICollectionViewDataSource, UICollectionViewDele
         return selectedCells.contains(indexPath)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 150, height: 50)
+        CGSize(width: self.view.bounds.width * 0.45, height: 50)
     }
 }

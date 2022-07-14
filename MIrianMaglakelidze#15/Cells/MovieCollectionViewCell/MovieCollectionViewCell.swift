@@ -2,15 +2,17 @@
 import UIKit
 
 class MovieCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var uiView: UIView! {
         didSet {
+            // ეს კოდი  არ მუშაობს . ვე გავიგე რატომ
             uiView.layer.cornerRadius = 10
             uiView.layer.borderWidth = 1
-//            uiView.backgroundColor = .ye
+            uiView.layer.borderColor = UIColor.clear.cgColor
+            uiView.layer.masksToBounds = true
         }
     }
-
+    
     @IBOutlet weak var posterImage: UIImageView! {
         didSet {
             posterImage.layer.cornerRadius = 10
@@ -18,6 +20,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     }
     @IBOutlet weak var titleLb: UILabel!
     @IBOutlet weak var genreLb: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -29,5 +32,5 @@ class MovieCollectionViewCell: UICollectionViewCell {
         
         
     }
-
+    
 }
