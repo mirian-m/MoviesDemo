@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,10 +34,9 @@
                         </subviews>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAW-mt-h33">
-                        <rect key="frame" x="415" y="75.5" width="27" height="48"/>
+                        <rect key="frame" x="412" y="69.5" width="30" height="60"/>
                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                         <state key="normal">
-                            <imageReference key="image" image="star.fill" catalog="system" renderingMode="original"/>
                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                         </state>
                         <connections>
@@ -73,7 +71,4 @@
             <point key="canvasLocation" x="-152.17391304347828" y="-107.47767857142857"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="star.fill" catalog="system" width="128" height="116"/>
-    </resources>
 </document>

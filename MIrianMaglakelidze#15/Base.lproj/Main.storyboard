@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,20 +17,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="394" placeholderIntrinsicHeight="43" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lvv-F4-ECR">
+                                <rect key="frame" x="10" y="103" width="394" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0bd-Kw-It9"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="15" minimumInteritemSpacing="10" id="1YS-bl-fTh">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B7k-Pa-Sbc">
-                                <rect key="frame" x="0.0" y="162" width="414" height="700"/>
+                                <rect key="frame" x="0.0" y="153" width="414" height="639"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zug-GP-Ghx">
+                                <rect key="frame" x="20" y="815.5" width="71.5" height="23"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="063-ka-wc1">
-                                <rect key="frame" x="224" y="108" width="170" height="34"/>
+                                <rect key="frame" x="184" y="812" width="210" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypW-2H-NgD">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="pGy-du-yAe"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="pGy-du-yAe"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="Favorite">
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Favorite Films">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -37,9 +58,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qFx-Rg-Onn">
-                                        <rect key="frame" x="90" y="0.0" width="80" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="Seen">
+                                        <rect key="frame" x="110" y="0.0" width="100" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Seen Films">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -52,17 +73,24 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="B7k-Pa-Sbc" firstAttribute="top" secondItem="063-ka-wc1" secondAttribute="bottom" constant="20" id="21i-mJ-mpz"/>
+                            <constraint firstItem="063-ka-wc1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zug-GP-Ghx" secondAttribute="trailing" constant="8" symbolic="YES" id="AY1-IK-juC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="B7k-Pa-Sbc" secondAttribute="trailing" id="Eq8-LO-bac"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="063-ka-wc1" secondAttribute="trailing" constant="20" id="G4Z-Ku-8jA"/>
+                            <constraint firstItem="lvv-F4-ECR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="K8T-1u-q17"/>
                             <constraint firstItem="B7k-Pa-Sbc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="N4B-2a-Mfq"/>
-                            <constraint firstItem="063-ka-wc1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="exI-bO-ktR"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="B7k-Pa-Sbc" secondAttribute="bottom" id="nzp-SS-KrY"/>
+                            <constraint firstItem="lvv-F4-ECR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="S05-jU-OOh"/>
+                            <constraint firstItem="063-ka-wc1" firstAttribute="centerY" secondItem="zug-GP-Ghx" secondAttribute="centerY" id="W7L-Nd-YNf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lvv-F4-ECR" secondAttribute="trailing" constant="10" id="Whd-Bc-p1l"/>
+                            <constraint firstItem="B7k-Pa-Sbc" firstAttribute="top" secondItem="lvv-F4-ECR" secondAttribute="bottom" constant="20" id="aMq-Nw-OOs"/>
+                            <constraint firstItem="063-ka-wc1" firstAttribute="top" secondItem="B7k-Pa-Sbc" secondAttribute="bottom" constant="20" id="d8s-Sq-rbq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="063-ka-wc1" secondAttribute="trailing" constant="20" id="hq0-vr-Qlr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="063-ka-wc1" secondAttribute="bottom" constant="20" id="rya-rS-Ylm"/>
+                            <constraint firstItem="zug-GP-Ghx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xXZ-BT-qbd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g5d-DR-2E1"/>
                     <connections>
                         <outlet property="favoriteBtn" destination="ypW-2H-NgD" id="HpF-V8-Yza"/>
+                        <outlet property="generCollectionView" destination="lvv-F4-ECR" id="ZEI-TU-62q"/>
                         <outlet property="moviesTableView" destination="B7k-Pa-Sbc" id="dli-mi-MRu"/>
                         <outlet property="seenBtn" destination="qFx-Rg-Onn" id="MQj-ne-pfD"/>
                     </connections>
@@ -79,9 +107,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="U8s-iG-vAx">
+                                <rect key="frame" x="0.0" y="54" width="414" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="C9V-MU-fg4"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="Yhd-ge-bFH">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="m8I-2W-Rng">
+                                <rect key="frame" x="0.0" y="426" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" name="AccentColor"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c7e-wi-G2V">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="214" width="414" height="638"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Ick-qN-jI1" id="7Hx-Yt-RZv"/>
                                     <outlet property="delegate" destination="Ick-qN-jI1" id="PnQ-Bc-cPq"/>
@@ -89,16 +136,21 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rTS-Mv-gSW"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rTS-Mv-gSW" firstAttribute="trailing" secondItem="c7e-wi-G2V" secondAttribute="trailing" id="0BZ-bN-vox"/>
-                            <constraint firstItem="rTS-Mv-gSW" firstAttribute="bottom" secondItem="c7e-wi-G2V" secondAttribute="bottom" id="Nxh-wj-Rvw"/>
-                            <constraint firstItem="c7e-wi-G2V" firstAttribute="top" secondItem="rTS-Mv-gSW" secondAttribute="top" id="qt2-cf-sZa"/>
+                            <constraint firstItem="c7e-wi-G2V" firstAttribute="trailing" secondItem="U8s-iG-vAx" secondAttribute="trailing" id="C6v-JY-ZdT"/>
+                            <constraint firstItem="c7e-wi-G2V" firstAttribute="top" secondItem="U8s-iG-vAx" secondAttribute="bottom" constant="10" id="Nhe-8F-yzw"/>
+                            <constraint firstItem="rTS-Mv-gSW" firstAttribute="bottom" secondItem="c7e-wi-G2V" secondAttribute="bottom" constant="10" id="Nxh-wj-Rvw"/>
+                            <constraint firstItem="c7e-wi-G2V" firstAttribute="leading" secondItem="U8s-iG-vAx" secondAttribute="leading" id="cbY-XC-udi"/>
                             <constraint firstItem="c7e-wi-G2V" firstAttribute="leading" secondItem="rTS-Mv-gSW" secondAttribute="leading" id="sLV-d4-NFh"/>
+                            <constraint firstItem="U8s-iG-vAx" firstAttribute="top" secondItem="rTS-Mv-gSW" secondAttribute="top" constant="10" id="xLg-vO-D4i"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="detailsTableView" destination="c7e-wi-G2V" id="x4I-wZ-zXa"/>
+                        <outlet property="indicatorForLoadDetail" destination="m8I-2W-Rng" id="eI0-p2-hbz"/>
+                        <outlet property="movieCollectionView" destination="U8s-iG-vAx" id="bpS-UA-huM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DPm-ss-8Ti" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -125,8 +177,11 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

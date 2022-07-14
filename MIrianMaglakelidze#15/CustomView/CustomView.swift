@@ -1,9 +1,3 @@
-//
-//  CustomView.swift
-//  MIrianMaglakelidze#15
-//
-//  Created by Admin on 7/12/22.
-//
 
 import UIKit
 
