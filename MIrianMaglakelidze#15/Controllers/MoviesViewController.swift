@@ -35,6 +35,8 @@ class MoviesViewController: UIViewController {
     private var myMovies: [Int: [Movie]] = [:]
     private var genre = ["all", "comedy", "action", "drama"]
     private var selectedCells: [IndexPath] = []
+    typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, String>
+    private lazy var differDataSource: DiffableDataSource = createDifDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,13 +50,32 @@ class MoviesViewController: UIViewController {
         moviesTableView.registerNib(class: MovieTableViewCell.self)
         
         generCollectionView.delegate = self
-        generCollectionView.dataSource = self
         generCollectionView.registerNib(class: GenreCollectionViewCell.self)
+        updatedataSource()
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         updateTableView()
+    }
+    //    MARK:- CREATE DifDataSource
+    func createDifDataSource() -> DiffableDataSource {
+        differDataSource = UICollectionViewDiffableDataSource(collectionView: generCollectionView, cellProvider: { (collectionView, indexPath, _) -> UICollectionViewCell? in
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenreCollectionViewCell", for: indexPath)
+                    as? GenreCollectionViewCell else { return UICollectionViewCell() }
+            
+            cell.generLb.text = self.genre[indexPath.row].uppercased()
+            return cell
+        })
+        return differDataSource
+    }
+    
+    func updatedataSource() {
+        var screenshot = NSDiffableDataSourceSnapshot<Section, String>()
+        screenshot.appendSections([.main])
+        screenshot.appendItems(genre, toSection: .main)
+        differDataSource.apply(screenshot)
     }
 }
 
@@ -162,16 +183,9 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate, Movi
 
 // MARK:- EXTENSION MoviesViewController: UICollectionViewDataSource, UICollectionViewDelegate
 
-extension MoviesViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     // MARK:- COLLECTION VIEW METHODS
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { 4 }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenreCollectionViewCell", for: indexPath) as? GenreCollectionViewCell else { return UICollectionViewCell()}
-        collectionCell.generLb.text = genre[indexPath.row].uppercased()
-        return collectionCell
-    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? GenreCollectionViewCell else { return }

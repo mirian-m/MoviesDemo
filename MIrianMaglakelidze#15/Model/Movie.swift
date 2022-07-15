@@ -1,7 +1,15 @@
 
 import Foundation
 
-class Movie {
+class Movie: Hashable {
+    static func == (lhs: Movie, rhs: Movie) -> Bool {
+        lhs.id == rhs.id
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    let id = UUID()
     let title: String
     let releaseDate: String
     let imdb: Double
@@ -26,4 +34,8 @@ enum Gener: String {
     case comedy
     case action
     case drama
+}
+
+enum Section {
+    case main
 }
