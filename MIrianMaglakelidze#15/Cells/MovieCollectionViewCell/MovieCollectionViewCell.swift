@@ -5,11 +5,9 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var uiView: UIView! {
         didSet {
-            // ეს კოდი  არ მუშაობს . ვე გავიგე რატომ
             uiView.layer.cornerRadius = 10
             uiView.layer.borderWidth = 1
             uiView.layer.borderColor = UIColor.clear.cgColor
-            uiView.layer.masksToBounds = true
         }
     }
     

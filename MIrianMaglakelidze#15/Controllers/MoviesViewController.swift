@@ -42,6 +42,7 @@ class MoviesViewController: UIViewController {
         super.viewDidLoad()
         configTableViewAndCollectionView()
         navigationItem.title = "MOVIES"
+
     }
     
     func configTableViewAndCollectionView() {
@@ -58,14 +59,15 @@ class MoviesViewController: UIViewController {
         super.viewWillAppear(true)
         updateTableView()
     }
-    //    MARK:- CREATE DifDataSource
+    
+    // MARK:- CREATE DifDataSource
     func createDifDataSource() -> DiffableDataSource {
         differDataSource = UICollectionViewDiffableDataSource(collectionView: generCollectionView, cellProvider: { (collectionView, indexPath, _) -> UICollectionViewCell? in
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenreCollectionViewCell", for: indexPath)
                     as? GenreCollectionViewCell else { return UICollectionViewCell() }
             
-            cell.generLb.text = self.genre[indexPath.row].uppercased()
+            cell.generLb.text = self.genre[indexPath.row].upperCasedFirstLetter()
             return cell
         })
         return differDataSource
@@ -111,21 +113,21 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate, Movi
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = Bundle.main.loadNibNamed("CustomView", owner: nil, options: nil)?.first as? CustomView else { return UIView() }
         if section == 0 {
-            headerView.backgroundColor = .green
+            headerView.backGroundView.backgroundColor = .green
             headerView.titleLb.text = "Seen Films"
         } else {
-            headerView.backgroundColor = .red
+            headerView.backGroundView.backgroundColor = .red
             headerView.titleLb.text = "Not Seen Films"
         }
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        70
+        500
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        40
+        60
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         moviesTableView.deselectRow(at: indexPath, animated: true)
@@ -157,8 +159,8 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate, Movi
         selectedCells.forEach { index in
             selectedGenre.append(genre[index.row])
         }
-        (selectedGenre.isEmpty || selectedGenre.contains("all")) ? checkFilterButtonAndUpdateTableView(array: movies)
-            : checkFilterButtonAndUpdateTableView(array: movies.filter({ selectedGenre.contains($0.gener.rawValue) }))
+        (selectedGenre.isEmpty || selectedGenre.contains("all")) ? checkFilterButton(array: movies)
+            : checkFilterButton(array: movies.filter({ selectedGenre.contains($0.gener.rawValue) }))
         moviesTableView.reloadData()
     }
     
@@ -168,7 +170,7 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate, Movi
         
     }
     
-    func checkFilterButtonAndUpdateTableView(array: [Movie]) {
+    func checkFilterButton(array: [Movie]) {
         if seenBtn.backgroundColor == .none, favoriteBtn.backgroundColor == .none {
             fillMyMovies(from: array)
         } else if favoriteBtn.backgroundColor != .none, seenBtn.backgroundColor != .none {

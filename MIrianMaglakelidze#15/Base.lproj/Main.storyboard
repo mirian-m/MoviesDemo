@@ -31,7 +31,7 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B7k-Pa-Sbc">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B7k-Pa-Sbc">
                                 <rect key="frame" x="0.0" y="153" width="414" height="639"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -108,10 +108,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="U8s-iG-vAx">
-                                <rect key="frame" x="0.0" y="54" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="54" width="414" height="180"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="C9V-MU-fg4"/>
+                                    <constraint firstAttribute="height" constant="180" id="C9V-MU-fg4"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="Yhd-ge-bFH">
                                     <size key="itemSize" width="128" height="128"/>
@@ -127,7 +127,7 @@
                                 <color key="color" name="AccentColor"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c7e-wi-G2V">
-                                <rect key="frame" x="0.0" y="214" width="414" height="638"/>
+                                <rect key="frame" x="0.0" y="239" width="414" height="608"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Ick-qN-jI1" id="7Hx-Yt-RZv"/>
@@ -140,8 +140,8 @@
                         <constraints>
                             <constraint firstItem="rTS-Mv-gSW" firstAttribute="trailing" secondItem="c7e-wi-G2V" secondAttribute="trailing" id="0BZ-bN-vox"/>
                             <constraint firstItem="c7e-wi-G2V" firstAttribute="trailing" secondItem="U8s-iG-vAx" secondAttribute="trailing" id="C6v-JY-ZdT"/>
-                            <constraint firstItem="c7e-wi-G2V" firstAttribute="top" secondItem="U8s-iG-vAx" secondAttribute="bottom" constant="10" id="Nhe-8F-yzw"/>
-                            <constraint firstItem="rTS-Mv-gSW" firstAttribute="bottom" secondItem="c7e-wi-G2V" secondAttribute="bottom" constant="10" id="Nxh-wj-Rvw"/>
+                            <constraint firstItem="c7e-wi-G2V" firstAttribute="top" secondItem="U8s-iG-vAx" secondAttribute="bottom" constant="5" id="Nhe-8F-yzw"/>
+                            <constraint firstItem="rTS-Mv-gSW" firstAttribute="bottom" secondItem="c7e-wi-G2V" secondAttribute="bottom" constant="15" id="Nxh-wj-Rvw"/>
                             <constraint firstItem="c7e-wi-G2V" firstAttribute="leading" secondItem="U8s-iG-vAx" secondAttribute="leading" id="cbY-XC-udi"/>
                             <constraint firstItem="c7e-wi-G2V" firstAttribute="leading" secondItem="rTS-Mv-gSW" secondAttribute="leading" id="sLV-d4-NFh"/>
                             <constraint firstItem="U8s-iG-vAx" firstAttribute="top" secondItem="rTS-Mv-gSW" secondAttribute="top" constant="10" id="xLg-vO-D4i"/>

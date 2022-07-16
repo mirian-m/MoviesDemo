@@ -29,3 +29,21 @@ extension UITableView {
     }
 }
 
+extension String {
+    func upperCasedFirstLetter() -> String {
+        return self.prefix(1).uppercased() + self.dropFirst()
+    }
+}
+
+extension UIImageView {
+    func addBottomGradient() {
+        let width = self.bounds.width
+        let height = self.bounds.height
+        let sHeight: CGFloat = 70
+        let shadow = UIColor.white.withAlphaComponent(0.4).cgColor
+        let bottomImageGradient = CAGradientLayer()
+        bottomImageGradient.frame = CGRect(x: 0, y: height - sHeight, width: width, height: sHeight)
+        bottomImageGradient.colors = [UIColor.clear.cgColor, shadow]
+        self.layer.insertSublayer(bottomImageGradient, at: 0)
+    }
+}

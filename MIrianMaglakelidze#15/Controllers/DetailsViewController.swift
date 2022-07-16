@@ -38,7 +38,7 @@ class DetailsViewController: UIViewController {
     
     // MARK:- Create Collection view Cell using UICollectionViewDiffableDataSource class
     func createDifDataSource() -> DiffableDataSource {
-        let diffDataSource = DiffableDataSource(collectionView: movieCollectionView) { (collectionView, indexPath, _) -> UICollectionViewCell? in
+        let diffDataSource = DiffableDataSource(collectionView: movieCollectionView) { (collectionView, indexPath, Movie) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath)
                     as? MovieCollectionViewCell else { return UICollectionViewCell() }
             cell.setupView(with: self.arrayOfFilteredMovies[indexPath.row])
@@ -80,7 +80,7 @@ extension DetailsViewController: UITableViewDataSource, UITableViewDelegate, Det
 extension DetailsViewController:  UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: self.view.bounds.width, height: 300)
+        CGSize(width: self.view.bounds.width, height: 160)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -37,7 +37,7 @@ class DetailsCell: UITableViewCell, UITextViewDelegate {
         self.descripstionTextView.text = movie.description
         self.genreLb.text = movie.gener.rawValue
         let seenImage = UIImage(systemName: movie.seen ? "eye.fill" : "eye.slash")?.withRenderingMode(.alwaysOriginal)
-        let favoriteImage = UIImage(systemName: movie.isFavourite ? "star.fill" : "star")?.withRenderingMode(.alwaysOriginal)
+        let favoriteImage = UIImage(systemName: movie.isFavourite ? "heart.fill" : "heart")?.withRenderingMode(.alwaysOriginal)
         self.seenBtn.setImage(seenImage, for: .normal)
         self.favoriteBtn.setImage(favoriteImage, for: .normal)
     }
