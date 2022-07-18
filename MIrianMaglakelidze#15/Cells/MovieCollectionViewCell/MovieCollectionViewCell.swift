@@ -27,8 +27,6 @@ class MovieCollectionViewCell: UICollectionViewCell {
         self.posterImage.image = UIImage(named: "defaultImage")
         self.titleLb.text = movie.title
         self.genreLb.text = movie.gener.rawValue
-        
-        
     }
     
 }

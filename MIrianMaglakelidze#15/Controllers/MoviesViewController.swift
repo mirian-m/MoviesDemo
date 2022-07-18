@@ -38,13 +38,20 @@ class MoviesViewController: UIViewController {
     typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, String>
     private lazy var differDataSource: DiffableDataSource = createDifDataSource()
     
+    // MARK:- Controller life cycle Function
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableViewAndCollectionView()
         navigationItem.title = "MOVIES"
-
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        updateTableView()
+    }
+    
+    // MARK:- Class Function
     func configTableViewAndCollectionView() {
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
@@ -53,19 +60,13 @@ class MoviesViewController: UIViewController {
         generCollectionView.delegate = self
         generCollectionView.registerNib(class: GenreCollectionViewCell.self)
         updatedataSource()
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        updateTableView()
     }
     
-    // MARK:- CREATE DifDataSource
+    // MARK:- CREATION OF DifDataSource
     func createDifDataSource() -> DiffableDataSource {
         differDataSource = UICollectionViewDiffableDataSource(collectionView: generCollectionView, cellProvider: { (collectionView, indexPath, _) -> UICollectionViewCell? in
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenreCollectionViewCell", for: indexPath)
-                    as? GenreCollectionViewCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenreCollectionViewCell", for: indexPath) as? GenreCollectionViewCell else { return UICollectionViewCell() }
             
             cell.generLb.text = self.genre[indexPath.row].upperCasedFirstLetter()
             return cell
@@ -122,13 +123,10 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate, Movi
         return headerView
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        500
-    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 500 }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        60
-    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 60 }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         moviesTableView.deselectRow(at: indexPath, animated: true)
         moveToDetails(indexPath: indexPath)
@@ -200,9 +198,11 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDelega
         }
         updateTableView()
     }
+    
     func isTappedMarkedCell(at indexPath: IndexPath) -> Bool {
         return selectedCells.contains(indexPath)
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: self.view.bounds.width * 0.45, height: 50)
     }
